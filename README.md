@@ -31,32 +31,36 @@ Além de métodos como o MMQ em um artigo usado como base para este trabalho foi
 
 
 \begin{equation}
-
+$$
     X_{LUT} = 
     \begin{bsmallmatrix}
         1blocodeQcolunasdalinha1 & 2blocodeQcolunasdalinha1 & \dots & (M+1)-ésimoblocodeQcolunasdalinha1\\
          & \vdots & & \\
         1blocodeQcolunasdalinha(n-M) & 2blocodeQcolunasdalinha(n-M) & \dots & (M+1)-ésimoblocodeQcolunasdalinha(n-M)\\
     \end{bsmallmatrix}  
-    
+$$   
     
 \end{equation}
 
 A matriz acima foi representada em blocos de Q colunas e 1 linha, o valor de Q é definido previamente e corresponde ao número de entradas das tabelas de busca. Essa matriz também pode ser escrita da seguinte forma:
 
 \begin{equation} \label{x_lut}
+   $$
     X_{LUT} = 
     \begin{bmatrix}
     \tilde{x}(1+M) f_0^{LUT}(|\tilde{x}(1+M)|) & \tilde{x}(M) f_1^{LUT}(|\tilde{x}(M)|) & \dots &  \tilde{x}(1) f_M^{LUT}(|\tilde{x}(1)|)\\
      & \vdots & & \\
     \tilde{x}(n) f_0^{LUT}(|\tilde{x}(n)|) & \tilde{x}(n-1) f_1^{LUT}(|\tilde{x}(n-1)|) & \dots &  \tilde{x}(n-M) f_M^{LUT}(|\tilde{x}(n-M)|)
     \end{bmatrix}
+    $$
 \end{equation}
 
 Portanto para a montagem da matriz precisamos considerar saída interpolada da LUT:
 
 \begin{equation}
+$$
     f^{pol}_m (|\tilde{x}(n-m)|)\sim f^{LUT}_m (|\tilde{x}(n-m)|) = \tilde{s}_{m(q-1)} + \left[ \frac{\tilde{s}_{m(q)} - \tilde{s}_{m(q-1)}}{e_{m(q)} - e_{m(q-1)}} \right] [|\tilde{x}(n-m)| - e_{m(q-1)}]
+$$
 \end{equation}
 
 Para estimar essa saída a condição $e_{m(q-1)}<|\tilde{x}(n-m)|<e_{mq}$ com $q$ variando entre 2 e Q deve ser satisfeita. A partir da equação anterior verifica-se que a saída interpolada de uma LUT depende das informações de duas posições consecutivas da LUT. Assim para preencher cada bloco da matriz $X_{LUT}$ consideramos as seguintes equações: 
